@@ -30,14 +30,48 @@ The system is designed as a **CLI tool**, focusing on:
 - **Libraries:**
   - `pdfplumber` – PDF text & table extraction  
   - `re` – Pattern matching (regex)  
-  - `argparse` – CLI interface  
+  - `argparse` – CLI interface 
+
+## 🧠 Approach
+
+The system follows a **rule-based parsing pipeline** to convert PDF content into structured Markdown format.
+
+### 📄 PDF Text Extraction
+- The PDF file is processed using open-source libraries  
+- Raw text and table structures are extracted from the document  
+- This forms the base input for further processing  
 
 ---
 
+### ✍️ Text Processing
+- The extracted text is split into individual lines  
+- Each line is analyzed using rule-based logic:
 
+  - 🔠 **Uppercase lines** → Converted into headings (`#`)
+  - 📌 **Lines starting with `-`, `•`, `*`** → Converted into list items
+  - 📝 **All other lines** → Treated as normal paragraphs  
 
+- Ensures structured and readable Markdown output  
 
 ---
+
+### 📊 Table Conversion
+- Extracted tables are processed separately  
+- Each table is converted into Markdown format using pipe (`|`) syntax  
+- A header separator (`---`) is automatically generated  
+- Ensures tables are properly formatted and readable  
+
+---
+
+### 📦 Output Generation
+- All processed content (text + tables) is combined  
+- Final structured content is generated in `.md` format  
+- The result is written to the specified output file  
+
+
+
+
+
 
 ## 📂 Project Structure
 ```
@@ -78,4 +112,18 @@ Run the CLI tool:
 
 ```
 python app.py sample.pdf output.md
+```
+
+⚠️ Limitations
+```
+
+📄 Complex layouts (multi-column PDFs) may not be perfectly preserved
+🖼️ No OCR support for scanned/image-based PDFs
+📊 Table extraction depends on PDF structure accuracy
+🎯 Basic formatting detection only (rule-based)
+⚡ CPU-only processing may slow large file handling
+📦 Large PDFs may consume higher memory
+🔤 Output depends on quality of PDF text extraction
+🧠 No semantic/AI-based understanding of content
+🧾 Limited detection of code blocks
 ```
