@@ -127,3 +127,11 @@ python app.py sample.pdf output.md
 🧠 No semantic/AI-based understanding of content
 🧾 Limited detection of code blocks
 ```
+## 🔮 Future Improvements
+
+- Add OCR support for scanned PDFs  
+- Improve table detection accuracy  
+- Add AI-based formatting cleanup  
+- Support images and links in Markdown  
+- Web-based UI for drag & drop conversion  
+- Performance optimization for large files  
