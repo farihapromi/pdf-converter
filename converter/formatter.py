@@ -1,8 +1,8 @@
 import re
 
 
-def format_tables(tables):
-    md_tables = []
+def format_tables(tables):  # convert extract table into markdown
+    md_tables = []  # store all formatted table
 
     for table in tables:
         if not table:
@@ -14,22 +14,22 @@ def format_tables(tables):
         header = "| " + " | ".join(table[0]) + " |"
         separator = "| " + " | ".join(["---"] * len(table[0])) + " |"
 
-        md.append(header)
-        md.append(separator)
+        md.append(header)  # add header
+        md.append(separator)  # add separator
 
         # Rows
         for row in table[1:]:
             row = [cell if cell else "" for cell in row]
             md.append("| " + " | ".join(row) + " |")
 
-        md_tables.append("\n".join(md))
+        md_tables.append("\n".join(md))  # add full table
 
-    return "\n\n".join(md_tables)
+    return "\n\n".join(md_tables)  # return all tables
 
 
 def convert_to_markdown(text, tables):
-    lines = text.split("\n")
-    md = []
+    lines = text.split("\n")  # break text into lines
+    md = []  # store output
 
     for line in lines:
         line = line.strip()
