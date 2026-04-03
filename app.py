@@ -1,5 +1,5 @@
 import argparse
-from converter.parser import extract_text
+from converter.parser import extract_content
 from converter.formatter import convert_to_markdown
 
 
@@ -10,13 +10,14 @@ def main():
 
     args = parser.parse_args()
 
-    text = extract_text(args.input)
-    markdown = convert_to_markdown(text)
+    text, tables = extract_content(args.input)
+
+    markdown = convert_to_markdown(text, tables)
 
     with open(args.output, "w", encoding="utf-8") as f:
         f.write(markdown)
 
-    print(" Conversion complete!")
+    print("Conversion complete!")
 
 
 if __name__ == "__main__":

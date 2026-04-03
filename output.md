@@ -15,8 +15,16 @@ Steps to use:
 This text contains **bold text** and *italic text* to test formatting.
 # TABLE EXAMPLE
 Name Age Role
-John 25 Developer
-Sara 22 Designer
+John 34 Developer
+Sara 23 Designer
 # CODE EXAMPLE
 def hello():
 print("Hello World")
+
+
+## Tables
+
+| Name | Age | Role |
+| --- | --- | --- |
+| John | 34 | Developer |
+| Sara | 23 | Designer |

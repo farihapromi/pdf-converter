@@ -1,13 +1,20 @@
 import pdfplumber
 
 
-def extract_text(pdf_path):
-    # Initialize empty string to store all text
-    text = ""
+def extract_content(pdf_path):
+    all_text = ""
+    tables = []
 
     with pdfplumber.open(pdf_path) as pdf:
-        # Loop through each page of pdf
         for page in pdf.pages:
-            text += page.extract_text() + "\n"
+            # Extract text
+            text = page.extract_text()
+            if text:
+                all_text += text + "\n"
 
-    return text
+            # Extract tables
+            extracted_tables = page.extract_tables()
+            for table in extracted_tables:
+                tables.append(table)
+
+    return all_text, tables
