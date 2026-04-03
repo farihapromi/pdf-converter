@@ -114,7 +114,7 @@ Run the CLI tool:
 python app.py sample.pdf output.md
 ```
 
-⚠️ Limitations
+## ⚠️ Limitations
 ```
 
 📄 Complex layouts (multi-column PDFs) may not be perfectly preserved
